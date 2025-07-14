@@ -20,6 +20,8 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
+
+
 const dbUrl = process.env.ATLASDB_URL
 
 main()
@@ -66,10 +68,6 @@ const sessionOptions = {
 };
 
 
-// app.get("/", (req, res)=>{
-//     res.send("hi i am root");
-// });
-
 
 
 app.use(session(sessionOptions));
@@ -89,15 +87,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.get("/demouser", async(req, res)=>{
-//     let fakeUser = new User({
-//         email: "student@gmail.com",
-//         username: "delta-student"
-//     });
 
-//     let registeredUser = await User.register(fakeUser, "helloworld");
-//     res.send(registeredUser);
-// });
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
